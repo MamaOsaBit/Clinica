@@ -63,30 +63,6 @@ app.get('/register', (req, res) =>{
   `);
 })
 
-app.post('/register', async (req, res) => {
-  try {
-    const { nombre, email, edad, password } = req.body
-    if (!email || !nombre) {
-      return res.status(400).json({ error: 'Faltan campos requeridos' })
-    }
-    const hashedPassword = await bcrypt.hash(password, 10)
-
-    await prisma.user.create({
-      data: {
-        nombre: capitalizeName(nombre),
-        email: normalizeEmail(email),
-        edad: edad ? parseInt(edad, 10) : null,
-        rol: 'PACIENTE',
-        password: hashedPassword
-      }
-    })
-    res.redirect(`https://http.cat/images/201.jpg`)
-  } catch (error) {
-    console.error('❌ Error al crear usuario desde form:', error)
-    res.status(500).json({ error: 'Error interno del servidor' })
-  }
-})
-
 /* === API SIMPLE === */
 app.post('/api/form', (req, res) => {
   const { nombre, email, edad, rol } = req.body || {}
@@ -112,24 +88,6 @@ app.get('/db-users', async (req, res) => {
   }
 })
 
-app.post('/login', async (req, res) => {
-  const { email, password } = req.body;
-
-  const user = await prisma.user.findUnique({ where: { email } });
-  if (!user) {
-    return res.redirect('https://http.cat/images/400.jpg'),
-    console.error('Usuario no encontrado');
-  }
-
-  const validPassword = await bcrypt.compare(password, user.password);
-  if (!validPassword) {
-    return res.redirect('https://http.cat/images/401.jpg'),
-    console.error('Contraseña incorrecta');
-  }
-
-  const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-  res.redirect('https://http.cat/images/200.jpg');
-})
 
 app.get('/login', (req, res) => {
   res.send(`
