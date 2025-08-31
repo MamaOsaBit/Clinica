@@ -3,8 +3,6 @@ const errorHandler = require('./src/middlewares/errorHandler')
 const LoggerMiddleware = require('./src/middlewares/logger')
 const { capitalizeName, normalizeEmail } = require('./src/utils/validacion')
 
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const authenticateToken = require('./src/middlewares/auth');
 
 /* === DOTENV === */
@@ -16,7 +14,6 @@ console.log(`🚀 Iniciando server con dotenv v${dotenvVersion}`)
 const express = require ('express')
 const bodyParser = require('body-parser')
 const { PrismaClient } = require('./generated/prisma')
-const prisma = new PrismaClient()
 
 const app = express()
 
