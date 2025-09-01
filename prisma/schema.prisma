@@ -35,12 +35,19 @@ model User {
 model HoraMedica {
   id          Int      @id @default(autoincrement())
   fecha       DateTime @default(now())
-  hora        String
-  duracion    Int
+  hora        Hora     @relation(fields: [horaId], references: [id])
+  horaId      Int
 
   paciente    User     @relation("PacienteHoras", fields: [pacienteId], references: [id])
   pacienteId  Int
 
   doctor      User     @relation("DoctorHoras", fields: [doctorId], references: [id])
   doctorId    Int
+}
+
+model Hora {
+  id        Int      @id @default(autoincrement())
+  start     DateTime
+  end       DateTime
+  horasMedicas HoraMedica[]
 }
