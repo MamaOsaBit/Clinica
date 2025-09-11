@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registro de Usuario</title>
+</head>
+<body>
+  <h1>Registro de Usuario</h1>
+  <form method="POST" action="/register">
+    <label>Email:</label>
+    <input type="email" name="email" required /><br>
+    <label>Nombre:</label>
+    <input type="text" name="nombre" required /><br>
+    <label>Password:</label>
+    <input type="password" name="password" required /><br>
+    <label>Rol:</label>
+    <select name="rol">
+      <option value="PACIENTE">Paciente</option>
+      <option value="MEDICO">Médico</option>
+    </select><br>
+    <button type="submit">Registrarse</button>
+  </form>
+</body>
+</html>
