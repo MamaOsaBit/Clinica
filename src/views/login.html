@@ -1,16 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Iniciar Sesión</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Login - Clinica</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <h1>Iniciar Sesión</h1>
-  <form method="POST" action="/login">
-    <label>Email:</label>
-    <input type="email" name="email" required /><br>
-    <label>Password:</label>
-    <input type="password" name="password" required /><br>
-    <button type="submit">Entrar</button>
-  </form>
+  <div class="container">
+    <div class="left">
+      <div class="brand">
+        <div class="logo">C</div>
+        <div>
+          <h1>Bienvenido</h1>
+          <p class="lead">Ingresa a tu cuenta para ver tus horas disponibles</p>
+        </div>
+      </div>
+      <div class="form-card">
+        <form method="POST" action="/login">
+          <div class="form-field">
+            <label>Email</label>
+            <input type="email" name="email" required />
+          </div>
+          <div class="form-field">
+            <label>Password</label>
+            <input type="password" name="password" required />
+          </div>
+
+          <button type="submit" class="primary">Entrar</button>
+        </form>
+        <div class="meta">¿No tienes cuenta? <a class="button-link" href="/register">Regístrate</a></div>
+      </div>
+
+    </div>
+
+    <div class="right">
+      <div class="list">
+        <h3>Accesos rápidos</h3>
+        <ul>
+          <li>Solicitar hora</li>
+          <li>Ver historial</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer">Clinica &copy; 2025</div>
 </body>
 </html>

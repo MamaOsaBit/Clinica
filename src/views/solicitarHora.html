@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Solicitar Hora Médica</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Solicitar Hora - Clinica</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <h1>Solicitar Hora Médica</h1>
-  <form method="POST" action="/paciente/solicitar-hora">
-    <label>Fecha y hora:</label>
-    <input type="datetime-local" name="fechaHora" required /><br>
-    <button type="submit">Solicitar</button>
-  </form>
+  <div class="container">
+    <div class="left">
+      <div class="brand">
+        <div class="logo">C</div>
+        <div>
+          <h1>Solicitar Hora</h1>
+          <p class="lead">Selecciona una hora disponible y solicita tu atención médica.</p>
+        </div>
+      </div>
+      <div class="form-card">
+        <form id="takeForm">
+          <input type="hidden" id="pacienteIdInput" name="pacienteId" value="" />
+          <div class="form-field">
+            <label>Selecciona una hora disponible</label>
+            <select id="horasSelect" name="horaMedicaId" required>
+              <option value="">Cargando...</option>
+            </select>
+          </div>
+          <button type="submit" class="primary">Solicitar hora</button>
+        </form>
+      </div>
+    </div>
+    <div class="right">
+      <div class="list">
+        <h3>Horas disponibles</h3>
+        <div id="freeList" class="small">Cargando...</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">Clinica &copy; 2025</div>
+
+  <script src="/js/solicitarHora.js"></script>
 </body>
 </html>

@@ -1,0 +1,133 @@
+{
+  "info": {
+    "name": "Clinica - Setup Doctors & Hours",
+    "_postman_id": "clinica-setup-2025-09",
+    "description": "Colección para crear 3 doctores y 10 horas médicas (45min) entre 2025-09-12 y 2025-09-17.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" },
+    { "key": "doctor1Id", "value": "" },
+    { "key": "doctor2Id", "value": "" },
+    { "key": "doctor3Id", "value": "" }
+  ],
+  {
+    "info": {
+      "name": "Clinica - Setup Doctors & Hours",
+      "_postman_id": "clinica-setup-2025-09",
+      "description": "Colección para crear 3 doctores y 10 horas médicas (45min) entre 2025-09-12 y 2025-09-17.",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+      { "key": "baseUrl", "value": "http://localhost:3000" },
+      { "key": "doctor1Id", "value": "" },
+      { "key": "doctor2Id", "value": "" },
+      { "key": "doctor3Id", "value": "" }
+    ],
+    "item": [
+      {
+        "info": {
+          "name": "Clinica - Setup Doctors & Hours",
+          "_postman_id": "clinica-setup-2025-09",
+          "description": "Colección para crear 3 doctores y 10 horas médicas (45min) entre 2025-09-12 y 2025-09-17.",
+          "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+        },
+        "variable": [
+          { "key": "baseUrl", "value": "http://localhost:3000" },
+          { "key": "doctor1Id", "value": "" },
+          { "key": "doctor2Id", "value": "" },
+          { "key": "doctor3Id", "value": "" }
+        ],
+        "item": [
+          {
+            "name": "Create Doctor 1",
+            "request": {
+              "method": "POST",
+              "header": [ { "key": "Content-Type", "value": "application/json" } ],
+              "url": "{{baseUrl}}/register",
+              "body": { "mode": "raw", "raw": "{\n  \"email\": \"doc1@example.com\",\n  \"nombre\": \"Dr. Juan Perez\",\n  \"password\": \"doctorpass1\",\n  \"rol\": \"DOCTOR\"\n}" }
+            },
+            "event": [
+              {
+                "listen": "test",
+                "script": {
+                  "type": "text/javascript",
+                  "exec": [
+                    "const code = pm.response.code;",
+                    "if (code === 201 || code === 200) {",
+                    "  const json = pm.response.json();",
+                    "  if (json && json.id) { pm.collectionVariables.set('doctor1Id', json.id); pm.test('doctor1Id stored', () => pm.expect(json.id).to.be.ok); }",
+                    "} else {",
+                    "  console.log('Create Doctor 1 status:', code, pm.response.text());",
+                    "}"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Create Doctor 2",
+            "request": {
+              "method": "POST",
+              "header": [ { "key": "Content-Type", "value": "application/json" } ],
+              "url": "{{baseUrl}}/register",
+              "body": { "mode": "raw", "raw": "{\n  \"email\": \"doc2@example.com\",\n  \"nombre\": \"Dra. Maria Gomez\",\n  \"password\": \"doctorpass2\",\n  \"rol\": \"DOCTOR\"\n}" }
+            },
+            "event": [
+              {
+                "listen": "test",
+                "script": {
+                  "type": "text/javascript",
+                  "exec": [
+                    "const code = pm.response.code;",
+                    "if (code === 201 || code === 200) {",
+                    "  const json = pm.response.json();",
+                    "  if (json && json.id) { pm.collectionVariables.set('doctor2Id', json.id); pm.test('doctor2Id stored', () => pm.expect(json.id).to.be.ok); }",
+                    "} else {",
+                    "  console.log('Create Doctor 2 status:', code);",
+                    "}"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Create Doctor 3",
+            "request": {
+              "method": "POST",
+              "header": [ { "key": "Content-Type", "value": "application/json" } ],
+              "url": "{{baseUrl}}/register",
+              "body": { "mode": "raw", "raw": "{\n  \"email\": \"doc3@example.com\",\n  \"nombre\": \"Dr. Carlos Ruiz\",\n  \"password\": \"doctorpass3\",\n  \"rol\": \"DOCTOR\"\n}" }
+            },
+            "event": [
+              {
+                "listen": "test",
+                "script": {
+                  "type": "text/javascript",
+                  "exec": [
+                    "const code = pm.response.code;",
+                    "if (code === 201 || code === 200) {",
+                    "  const json = pm.response.json();",
+                    "  if (json && json.id) { pm.collectionVariables.set('doctor3Id', json.id); pm.test('doctor3Id stored', () => pm.expect(json.id).to.be.ok); }",
+                    "} else {",
+                    "  console.log('Create Doctor 3 status:', code);",
+                    "}"
+                  ]
+                }
+              }
+            ]
+          },
+
+          { "name": "Create Hora 1 - 2025-09-12 09:00", "request": { "method": "POST", "header": [ { "key": "Content-Type", "value": "application/json" } ], "url": "{{baseUrl}}/medico/crear-hora", "body": { "mode": "raw", "raw": "{ \"doctorId\": \"{{doctor1Id}}\", \"start\": \"2025-09-12T09:00:00\", \"end\": \"2025-09-12T09:45:00\" }" } },
+          { "name": "Create Hora 2 - 2025-09-12 10:00", "request": { "method": "POST", "header": [ { "key": "Content-Type", "value": "application/json" } ], "url": "{{baseUrl}}/medico/crear-hora", "body": { "mode": "raw", "raw": "{ \"doctorId\": \"{{doctor2Id}}\", \"start\": \"2025-09-12T10:00:00\", \"end\": \"2025-09-12T10:45:00\" }" } },
+          { "name": "Create Hora 3 - 2025-09-12 11:00", "request": { "method": "POST", "header": [ { "key": "Content-Type", "value": "application/json" } ], "url": "{{baseUrl}}/medico/crear-hora", "body": { "mode": "raw", "raw": "{ \"doctorId\": \"{{doctor3Id}}\", \"start\": \"2025-09-12T11:00:00\", \"end\": \"2025-09-12T11:45:00\" }" } },
+          { "name": "Create Hora 4 - 2025-09-13 09:00", "request": { "method": "POST", "header": [ { "key": "Content-Type", "value": "application/json" } ], "url": "{{baseUrl}}/medico/crear-hora", "body": { "mode": "raw", "raw": "{ \"doctorId\": \"{{doctor1Id}}\", \"start\": \"2025-09-13T09:00:00\", \"end\": \"2025-09-13T09:45:00\" }" } },
+          { "name": "Create Hora 5 - 2025-09-13 10:00", "request": { "method": "POST", "header": [ { "key": "Content-Type", "value": "application/json" } ], "url": "{{baseUrl}}/medico/crear-hora", "body": { "mode": "raw", "raw": "{ \"doctorId\": \"{{doctor2Id}}\", \"start\": \"2025-09-13T10:00:00\", \"end\": \"2025-09-13T10:45:00\" }" } },
+          { "name": "Create Hora 6 - 2025-09-14 09:30", "request": { "method": "POST", "header": [ { "key": "Content-Type", "value": "application/json" } ], "url": "{{baseUrl}}/medico/crear-hora", "body": { "mode": "raw", "raw": "{ \"doctorId\": \"{{doctor3Id}}\", \"start\": \"2025-09-14T09:30:00\", \"end\": \"2025-09-14T10:15:00\" }" } },
+          { "name": "Create Hora 7 - 2025-09-15 09:00", "request": { "method": "POST", "header": [ { "key": "Content-Type", "value": "application/json" } ], "url": "{{baseUrl}}/medico/crear-hora", "body": { "mode": "raw", "raw": "{ \"doctorId\": \"{{doctor1Id}}\", \"start\": \"2025-09-15T09:00:00\", \"end\": \"2025-09-15T09:45:00\" }" } },
+          { "name": "Create Hora 8 - 2025-09-16 09:00", "request": { "method": "POST", "header": [ { "key": "Content-Type", "value": "application/json" } ], "url": "{{baseUrl}}/medico/crear-hora", "body": { "mode": "raw", "raw": "{ \"doctorId\": \"{{doctor2Id}}\", \"start\": \"2025-09-16T09:00:00\", \"end\": \"2025-09-16T09:45:00\" }" } },
+          { "name": "Create Hora 9 - 2025-09-17 09:00", "request": { "method": "POST", "header": [ { "key": "Content-Type", "value": "application/json" } ], "url": "{{baseUrl}}/medico/crear-hora", "body": { "mode": "raw", "raw": "{ \"doctorId\": \"{{doctor3Id}}\", \"start\": \"2025-09-17T09:00:00\", \"end\": \"2025-09-17T09:45:00\" }" } },
+          { "name": "Create Hora 10 - 2025-09-17 10:00", "request": { "method": "POST", "header": [ { "key": "Content-Type", "value": "application/json" } ], "url": "{{baseUrl}}/medico/crear-hora", "body": { "mode": "raw", "raw": "{ \"doctorId\": \"{{doctor1Id}}\", \"start\": \"2025-09-17T10:00:00\", \"end\": \"2025-09-17T10:45:00\" }" } }
+        ]
+      }
+      

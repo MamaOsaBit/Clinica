@@ -1,23 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Registro de Usuario</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Registro - Clinica</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <h1>Registro de Usuario</h1>
-  <form method="POST" action="/register">
-    <label>Email:</label>
-    <input type="email" name="email" required /><br>
-    <label>Nombre:</label>
-    <input type="text" name="nombre" required /><br>
-    <label>Password:</label>
-    <input type="password" name="password" required /><br>
-    <label>Rol:</label>
-    <select name="rol">
-      <option value="PACIENTE">Paciente</option>
-      <option value="MEDICO">Médico</option>
-    </select><br>
-    <button type="submit">Registrarse</button>
-  </form>
+  <div class="container">
+    <div class="left">
+      <div class="brand">
+        <div class="logo">C</div>
+        <div>
+          <h1>Clinica</h1>
+          <p class="lead">Crea tu cuenta para solicitar horas médicas rápidamente.</p>
+        </div>
+      </div>
+      <div class="form-card">
+        <form method="POST" action="/register">
+          <div class="form-row">
+            <div style="flex:1">
+              <div class="form-field">
+                <label>Email</label>
+                <input type="email" name="email" required />
+              </div>
+            </div>
+            <div style="width:160px">
+              <div class="form-field">
+                <label>Edad</label>
+                <input type="text" name="edad" />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label>Nombre</label>
+            <input type="text" name="nombre" required />
+          </div>
+
+          <div class="form-field">
+            <label>Password</label>
+            <input type="password" name="password" required />
+          </div>
+
+          <div class="form-field">
+            <label>Rol</label>
+            <select name="rol">
+              <option value="PACIENTE">Paciente</option>
+              <option value="DOCTOR">Doctor</option>
+              <option value="ADMIN">Admin</option>
+            </select>
+          </div>
+
+          <button type="submit" class="primary">Crear cuenta</button>
+        </form>
+        <div class="meta">¿Ya tienes cuenta? <a class="button-link" href="/login">Inicia sesión</a></div>
+      </div>
+
+    </div>
+
+    <div class="right">
+      <div class="list">
+        <h3>Beneficios</h3>
+        <ul>
+          <li>Gestión rápida de horas</li>
+          <li>Historial de pacientes</li>
+          <li>Panel para médicos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer">Clinica &copy; 2025</div>
 </body>
 </html>

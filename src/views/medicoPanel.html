@@ -1,19 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Panel del Médico</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Panel Médico - Clinica</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <h1>Panel del Médico</h1>
-  <h2>Horas Libres</h2>
-  <div id="horas-libres"></div>
-  <h2>Horas Tomadas</h2>
-  <div id="horas-tomadas"></div>
-  <h2>Crear Nueva Hora</h2>
-  <form method="POST" action="/medico/crear-hora">
-    <label>Fecha y hora:</label>
-    <input type="datetime-local" name="fechaHora" required /><br>
-    <button type="submit">Crear Hora</button>
-  </form>
+  <div class="container">
+    <div class="left">
+      <div class="brand">
+        <div class="logo">C</div>
+        <div>
+          <h1>Panel Médico</h1>
+          <p class="lead">Administra tus horas libres y citas tomadas.</p>
+        </div>
+      </div>
+
+      <div class="list" id="takenList">
+        <h3>Horas Tomadas</h3>
+        <div id="takenContent" class="small">Cargando...</div>
+      </div>
+
+      <div style="margin-top:18px" class="form-card">
+        <h3>Crear nueva hora</h3>
+        <form id="createForm" method="POST" action="/medico/crear-hora">
+          <input type="hidden" id="doctorIdInput" name="doctorId" value="" />
+          <div class="form-field">
+            <label>Fecha y hora de inicio</label>
+            <input type="datetime-local" name="start" required />
+          </div>
+          <div class="form-field">
+            <label>Fecha y hora de término</label>
+            <input type="datetime-local" name="end" required />
+          </div>
+          <button type="submit" class="primary">Crear hora</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="list">
+        <h3>Horas Libres</h3>
+        <div id="freeContent" class="small">Cargando...</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">Clinica &copy; 2025</div>
+
+  <script src="/js/medicoPanel.js"></script>
 </body>
 </html>

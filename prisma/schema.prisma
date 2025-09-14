@@ -38,8 +38,9 @@ model HoraMedica {
   hora        Hora     @relation(fields: [horaId], references: [id])
   horaId      Int
 
-  paciente    User     @relation("PacienteHoras", fields: [pacienteId], references: [id])
-  pacienteId  Int
+  // paciente puede ser NULL cuando la hora está disponible
+  paciente    User?    @relation("PacienteHoras", fields: [pacienteId], references: [id])
+  pacienteId  Int?
 
   doctor      User     @relation("DoctorHoras", fields: [doctorId], references: [id])
   doctorId    Int
